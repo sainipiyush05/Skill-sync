@@ -1,46 +1,155 @@
-# Getting Started with Create React App
+# Skill Sync - Developer Growth Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="public/favicon.ico" alt="Skill Sync Logo" width="200"/>
+</p>
 
-## Available Scripts
+Skill Sync is a comprehensive platform that helps developers track and synchronize their coding journey across multiple platforms. Monitor your progress on LeetCode, HackerRank, CodeChef, and more in one unified dashboard.
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- **Platform Integration**
+  - LeetCode progress tracking
+  - HackerRank achievements
+  - CodeChef statistics
+  - GitHub activity monitoring
+  - LinkedIn profile optimization
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Learning Tools**
+  - Personalized learning paths
+  - Skill progression tracking
+  - Interactive learning tree
+  - Custom roadmaps
+  - Progress analytics
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Developer Tools**
+  - Real-time statistics
+  - Performance metrics
+  - Progress visualization
+  - Achievement tracking
+  - Custom goal setting
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend**
+  - React.js
+  - TypeScript
+  - Tailwind CSS
+  - Framer Motion
+  - Chart.js
+  - Firebase Auth
 
-### `npm run build`
+- **Backend**
+  - FastAPI
+  - Python
+  - Firebase
+  - Machine Learning Models
+  - Sentence Transformers
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🏗️ Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/yourusername/skill-sync.git
+```
 
-### `npm run eject`
+2. **Navigate to the project directory**
+```bash
+cd skill-sync
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. **Install dependencies**
+```bash
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Run the development server**
+```bash
+npm run dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. **Environment Setup**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+Frontend (.env)
+REACT_APP_API_URL=http://localhost:5001
+REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
+```
 
-## Learn More
+```bash
+Start backend (in backend directory)
+uvicorn app:app --reload --port 5001
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📱 Usage
+
+1. **Authentication**
+   - Sign up with email/password or Google
+   - Complete your profile with platform usernames
+
+2. **Platform Integration**
+   - Connect your coding platform accounts
+   - Sync your progress automatically
+   - View unified statistics
+
+3. **Learning Path**
+   - Choose your career goals
+   - Follow recommended learning paths
+   - Track your progress
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Create React App](https://github.com/facebook/create-react-app)
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [Firebase](https://firebase.google.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+
+## 📞 Support
+
+For support, email support@skillsync.dev or join our Discord community.
+
+## 🔮 Roadmap
+
+- [ ] Add more coding platforms
+- [ ] Implement AI-powered recommendations
+- [ ] Add team collaboration features
+- [ ] Introduce mentorship system
+- [ ] Add code review integration
+- [ ] Implement real-time progress sharing
+
+## 🔒 Security
+
+Please report any security issues to security@skillsync.dev
+
+## 🌟 Show your support
+
+Give a ⭐️ if this project helped you!
+
+---
+
+<p align="center">
+  Made with ❤️ by the Skill Sync Team
+</p>
+
