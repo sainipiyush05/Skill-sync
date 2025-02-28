@@ -32,9 +32,10 @@ interface PlatformStats {
   username: string;
   solved: number;
   total: number;
-  rank: string;
-  rating: number;
-  recentSubmissions: Array<{
+  rank?: string;
+  rating?: number;
+  badges?: HackerRankBadge[];
+  recentSubmissions?: Array<{
     problem: string;
     difficulty: string;
     status: string;
@@ -43,6 +44,12 @@ interface PlatformStats {
   monthlyProgress: {
     [key: string]: number;
   };
+}
+
+interface HackerRankBadge {
+  name: string;
+  stars: number;
+  solved: number;
 }
 
 type SyncStatus = 'syncing' | 'synced' | 'error' | null;
@@ -615,100 +622,273 @@ const CodingStats = () => {
   };
 
   const PlatformSection = ({ platform, stats }: { platform: string; stats?: PlatformStats }) => {
-    if (!stats) {
+    if (!stats) return null;
+
+    const renderHackerRankChart = () => {
+      if (!Array.isArray(stats?.badges) || stats.badges.length === 0) return null;
+
+      const chartData = {
+        labels: stats.badges.map(badge => badge.name),
+        datasets: [
+          {
+            label: 'Problems Solved',
+            data: stats.badges.map(badge => badge.solved),
+            borderColor: '#6366F1',
+            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+            borderWidth: 2,
+            tension: 0.4,
+            fill: true,
+            pointBackgroundColor: '#6366F1',
+            pointBorderColor: '#FFFFFF',
+            pointBorderWidth: 2,
+            pointRadius: 4,
+            pointHoverRadius: 6,
+          }
+        ]
+      };
+
+      const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)',
+              drawBorder: false,
+            },
+            ticks: {
+              color: '#9CA3AF',
+              font: {
+                size: 11
+              },
+              padding: 10
+            },
+            border: {
+              display: false
+            }
+          },
+          x: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)',
+              drawBorder: false,
+              display: false
+            },
+            ticks: {
+              color: '#9CA3AF',
+              font: {
+                size: 11
+              },
+              maxRotation: 45,
+              minRotation: 45,
+              padding: 10
+            },
+            border: {
+              display: false
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            backgroundColor: 'rgba(17, 24, 39, 0.9)',
+            titleColor: '#FFFFFF',
+            bodyColor: '#9CA3AF',
+            padding: 12,
+            borderColor: 'rgba(255, 255, 255, 0.1)',
+            borderWidth: 1,
+            displayColors: false,
+            callbacks: {
+              title: (items: any[]) => {
+                if (!items.length || !stats.badges) return '';
+                const badge = stats.badges[items[0].dataIndex];
+                return badge ? `${badge.name} (${badge.stars}★)` : '';
+              },
+              label: (item: any) => {
+                return `Problems Solved: ${item.raw}`;
+              }
+            }
+          }
+        },
+        interaction: {
+          intersect: false,
+          mode: 'index' as const
+        },
+        animation: {
+          duration: 1000,
+          easing: 'easeInOutQuart'
+        }
+      };
+
       return (
-        <div className="bg-secondary rounded-2xl p-6 space-y-6">
-          <div className="flex justify-between items-center">
-            <h3 className="text-xl font-bold text-white">{platform}</h3>
-            <button
-              onClick={() => setShowSettings(true)}
-              className="p-2 hover:bg-primary-light rounded-lg transition-colors"
-            >
-              Configure
-            </button>
-          </div>
-          <div className="flex items-center justify-center h-64">
-            <p className="text-gray-400">No data available. Please configure your username.</p>
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-400">Badge Progress</h4>
+          <div className="h-[300px] p-4 bg-primary-light rounded-lg">
+            <Line data={chartData} options={chartOptions as any} />
           </div>
         </div>
       );
-    }
+    };
 
     return (
-      <div className="bg-secondary rounded-2xl p-6 space-y-6">
-        <div className="flex justify-between items-center">
+      <div className="bg-secondary p-6 rounded-xl space-y-6">
+        <div className="flex items-center justify-between">
           <h3 className="text-xl font-bold text-white">{platform}</h3>
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-gray-400">
-              {syncStatus[platform.toLowerCase()] === 'syncing' && 'Syncing...'}
-              {syncStatus[platform.toLowerCase()] === 'synced' && 'Synced'}
-              {syncStatus[platform.toLowerCase()] === 'error' && 'Sync failed'}
-            </span>
-            <button
-              onClick={() => syncPlatform(platform.toLowerCase())}
-              className="p-2 hover:bg-primary-light rounded-lg transition-colors"
-              disabled={syncStatus[platform.toLowerCase()] === 'syncing'}
-            >
-              <FiTrendingUp className={`w-5 h-5 ${
-                syncStatus[platform.toLowerCase()] === 'syncing' 
-                  ? 'animate-spin text-gray-400' 
-                  : 'text-accent'
-              }`} />
-            </button>
-          </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
-          <div className="bg-primary-light p-4 rounded-lg">
-            <p className="text-sm text-gray-400">Solved</p>
-            <p className="text-2xl font-bold text-white">{stats.solved}</p>
-          </div>
-          <div className="bg-primary-light p-4 rounded-lg">
-            <p className="text-sm text-gray-400">Rank</p>
-            <p className="text-2xl font-bold text-white">{stats.rank}</p>
-          </div>
-          <div className="bg-primary-light p-4 rounded-lg">
-            <p className="text-sm text-gray-400">Rating</p>
-            <p className="text-2xl font-bold text-white">{stats.rating}</p>
-          </div>
-        </div>
+        {platform === 'HackerRank' ? (
+          // HackerRank Section
+          <div className="space-y-6">
+            {/* Total Problems Solved */}
+            <div className="flex items-center space-x-4">
+              <div className="bg-primary-light p-3 rounded-lg">
+                <FiCode className="h-5 w-5 text-accent" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-400">Total Solved</p>
+                <p className="text-xl font-bold text-white">{stats.solved || 0}</p>
+              </div>
+            </div>
 
-        {Object.keys(stats.monthlyProgress).length > 0 ? (
-          <div className="h-64">
-            <Line
-              data={{
-                labels: Object.keys(stats.monthlyProgress),
-                datasets: [{
-                  label: 'Problems Solved',
-                  data: Object.values(stats.monthlyProgress),
-                  borderColor: getPlatformColor(platform),
-                  tension: 0.4
-                }]
-              }}
-              options={chartOptions}
-            />
+            {/* Badges Grid */}
+            {stats.badges && stats.badges.length > 0 && (
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium text-gray-400">Skill Badges</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {stats.badges.map((badge, index) => (
+                    <div key={index} className="bg-primary-light p-4 rounded-lg">
+                      <div className="flex justify-between items-center mb-2">
+                        <p className="text-sm font-medium text-white">{badge.name}</p>
+                        <div className="flex space-x-1">
+                          {[...Array(5)].map((_, i) => (
+                            <span 
+                              key={i} 
+                              className={`text-sm ${
+                                i < (badge.stars || 0) ? 'text-yellow-400' : 'text-gray-600'
+                              }`}
+                            >
+                              ★
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-400">
+                        {badge.solved || 0} problems solved
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {renderHackerRankChart()}
           </div>
         ) : (
-          <div className="h-64 flex items-center justify-center">
-            <p className="text-gray-400">No progress data available</p>
+          // LeetCode and CodeChef Section
+          <div className="space-y-6">
+            {/* Problems Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex items-center space-x-4">
+                <div className="bg-primary-light p-3 rounded-lg">
+                  <FiCode className="h-5 w-5 text-accent" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Problems Solved</p>
+                  <p className="text-xl font-bold text-white">{stats.solved || 0}</p>
+                </div>
+              </div>
+
+              {stats.total !== undefined && (
+                <div className="flex items-center space-x-4">
+                  <div className="bg-primary-light p-3 rounded-lg">
+                    <FiAward className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400">Total Problems</p>
+                    <p className="text-xl font-bold text-white">{stats.total}</p>
+                  </div>
+                </div>
+              )}
+
+              {stats.rating !== undefined && (
+                <div className="flex items-center space-x-4">
+                  <div className="bg-primary-light p-3 rounded-lg">
+                    <FiTrendingUp className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400">Rating</p>
+                    <p className="text-xl font-bold text-white">{stats.rating}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Monthly Progress Chart */}
+            {stats.monthlyProgress && Object.keys(stats.monthlyProgress).length > 0 && (
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium text-gray-400">Monthly Progress</h4>
+                <div className="h-[200px]">
+                  <Line
+                    data={{
+                      labels: Object.keys(stats.monthlyProgress),
+                      datasets: [{
+                        label: 'Problems Solved',
+                        data: Object.values(stats.monthlyProgress),
+                        borderColor: '#6366F1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        tension: 0.4
+                      }]
+                    }}
+                    options={{
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      scales: {
+                        y: {
+                          beginAtZero: true,
+                          grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                          ticks: { color: '#9CA3AF' }
+                        },
+                        x: {
+                          grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                          ticks: { color: '#9CA3AF' }
+                        }
+                      },
+                      plugins: { legend: { display: false } }
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Recent Submissions */}
+            {stats.recentSubmissions && stats.recentSubmissions.length > 0 && (
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium text-gray-400">Recent Submissions</h4>
+                <div className="space-y-2">
+                  {stats.recentSubmissions.map((submission, index) => (
+                    <div key={index} className="bg-primary-light p-3 rounded-lg">
+                      <div className="flex justify-between items-center">
+                        <p className="text-sm font-medium text-white">{submission.problem}</p>
+                        <span className={`text-xs px-2 py-1 rounded ${
+                          submission.status === 'Accepted' ? 'bg-green-500/20 text-green-400' : 
+                          'bg-red-500/20 text-red-400'
+                        }`}>
+                          {submission.status}
+                        </span>
+                      </div>
+                      <div className="flex justify-between mt-2">
+                        <p className="text-xs text-gray-400">{submission.difficulty}</p>
+                        <p className="text-xs text-gray-400">{submission.timestamp}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
-
-        <div className="space-y-2">
-          <h4 className="text-sm font-medium text-gray-400">Recent Submissions</h4>
-          {stats.recentSubmissions.length > 0 ? (
-            stats.recentSubmissions.slice(0, 3).map((submission, index) => (
-              <div key={index} className="bg-primary-light p-3 rounded-lg">
-                <p className="text-sm font-medium text-white">{submission.problem}</p>
-                <p className="text-xs text-gray-400">
-                  {submission.difficulty} • {submission.status}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-400">No recent submissions</p>
-          )}
-        </div>
       </div>
     );
   };
