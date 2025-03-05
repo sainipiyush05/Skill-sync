@@ -151,12 +151,17 @@ const LearningTree = () => {
         }
       );
 
+      // Log the response to see what we're getting
+      console.log('API Response:', response.data);
+
       const paths: CareerPath[] = response.data.map((career: any) => ({
-        title: career.job_role,
+        title: career.title,  // Changed from job_role to title
         category: career.category,
-        match: parseFloat(career.similarity_score),
-        description: `Based on your skills, this role has a ${Math.round(parseFloat(career.similarity_score))}% match.`,
-        missingSkills: career.missing_skills === 'None' ? [] : career.missing_skills.split(', '),
+        match: career.match,  // Changed from similarity_score to match
+        description: career.description,
+        missingSkills: Array.isArray(career.missing_skills) 
+          ? career.missing_skills 
+          : [],
         skills: selectedSkills.map(skill => ({
           name: skill,
           progress: 100,
@@ -165,6 +170,8 @@ const LearningTree = () => {
         }))
       }));
 
+      console.log('Transformed paths:', paths);
+      
       setCareerPaths(paths);
       setSelectedPath(paths[0] || null);
     } catch (error) {

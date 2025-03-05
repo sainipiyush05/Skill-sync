@@ -4,9 +4,8 @@ from pydantic import BaseModel
 from typing import List, Dict
 import joblib
 import numpy as np
-from sentence_transformers import SentenceTransformer
-import re
 import os
+import json
 
 app = FastAPI()
 
@@ -19,81 +18,48 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Update the current directory path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-models_dir = os.path.join(current_dir, 'models')
+# Update paths
+current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+models_dir = os.path.join(current_dir, 'Models')
 
-# Initialize models with new path
-model = SentenceTransformer('all-MiniLM-L6-v2')
-
-# Skill categories
-SKILL_CATEGORIES = {
-    "Computer Science & IT": [
-        "C++", "JavaScript", "Node.js", "Python", "PyTorch", "TensorFlow", "React",
-        "AWS", "APIs", "Systems", "Infrastructure", "Integration", "Analytics", "BI",
-        "Data", "Deep Learning", "Machine Learning", "NLP", "Intelligence", "Algorithms",
-        "SQL", "Tableau", "Software", "Automation", "SCADA", "PLC", "RTOS", "ROS",
-        "FPGA", "Microcontrollers", "Digital Systems", "Workflows"
-    ],
-    "Healthcare & Life Sciences": [
-        "Healthcare", "Medical", "Patient Care", "Clinical Trials", "EHR", "Telehealth",
-        "Pharmacy", "Health Records", "Biochemistry", "Drug Development", "Fermentation",
-        "FDA", "CDISC", "GCP", "HIPAA", "Quality Management", "Medical Devices",
-        "Research", "Digital Health"
-    ],
-    "Management & Business": [
-        "Finance", "Investment", "Portfolio Management", "Trading", "Budgeting",
-        "Forecasting", "Risk Management", "Strategic Planning", "Leadership",
-        "Business Development", "Project Management", "Agile", "Scrum", "Supply Chain",
-        "Operations", "Marketing", "Sales", "Customer Relations"
-    ],
-    "Engineering & Industrial": [
-        "Aerodynamics", "Structural Engineering", "Mechanical Engineering",
-        "Electrical Engineering", "Circuit Design", "Signal Processing",
-        "Power Systems", "Manufacturing", "Process Engineering", "Industrial Design",
-        "CAD", "AutoCAD", "SolidWorks", "3D Modeling", "Robotics"
-    ],
-    "Science & Research": [
-        "Mathematics", "Statistics", "R", "Data Analysis", "Research Methods",
-        "Scientific Writing", "Laboratory Techniques", "Experimental Design",
-        "Physics", "Chemistry", "Biology", "Environmental Science"
-    ]
+# Define job categories and skills
+JOB_CATEGORIES = {
+    "Software Development": ["Python", "JavaScript", "Java", "C++", "React", "Node.js"],
+    "Data Science": ["Python", "R", "Machine Learning", "SQL", "Statistics"],
+    "Cloud Computing": ["AWS", "Azure", "Docker", "Kubernetes"],
+    "Cybersecurity": ["Network Security", "Cryptography", "Security Tools"],
+    "DevOps": ["CI/CD", "Docker", "Kubernetes", "Jenkins"],
+    "Web Development": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+    "Mobile Development": ["Android", "iOS", "React Native", "Flutter"],
+    "Database": ["SQL", "MongoDB", "PostgreSQL", "Redis"],
+    "AI/ML": ["Python", "TensorFlow", "PyTorch", "NLP"],
+    "System Design": ["Architecture", "Scalability", "System Design Patterns"]
 }
 
-# Expanded job roles with categorized skills
-JOB_ROLES = {
-    "Full Stack Developer": {
-        "category": "Computer Science & IT",
-        "skills": ["JavaScript", "React", "Node.js", "MongoDB", "Python", "AWS", "APIs", "SQL"]
-    },
-    "Data Scientist": {
-        "category": "Computer Science & IT",
-        "skills": ["Python", "Machine Learning", "SQL", "Statistics", "TensorFlow", "Data Analysis"]
-    },
-    "Healthcare Software Engineer": {
-        "category": "Healthcare & Life Sciences",
-        "skills": ["Python", "Healthcare", "EHR", "HIPAA", "APIs", "Medical Systems"]
-    },
-    "Business Analyst": {
-        "category": "Management & Business",
-        "skills": ["Data Analysis", "SQL", "Business Intelligence", "Project Management", "Reporting"]
-    },
-    "Robotics Engineer": {
-        "category": "Engineering & Industrial",
-        "skills": ["ROS", "Python", "C++", "Robotics", "Control Systems", "Sensors"]
-    },
-    "Research Scientist": {
-        "category": "Science & Research",
-        "skills": ["Python", "R", "Statistics", "Research Methods", "Data Analysis", "Scientific Writing"]
+# Load the job data
+try:
+    print(f"Looking for job data in: {models_dir}")
+    job_data_path = os.path.join(models_dir, 'processed_job_data.pkl')
+    print(f"Loading job data from: {job_data_path}")
+    job_data = joblib.load(job_data_path)
+    print("Job data loaded successfully")
+except Exception as e:
+    print(f"Error loading job data: {e}")
+    # Initialize with default data if loading fails
+    job_data = {
+        category: {
+            "skills": skills,
+            "description": f"This is a {category} role",
+            "category": category
+        } for category, skills in JOB_CATEGORIES.items()
     }
-}
 
 class SkillsInput(BaseModel):
     skills: List[str]
 
 def clean_skills(skills: List[str]) -> List[str]:
     """Clean and standardize skill names"""
-    return [re.sub(r'[^\w\s]', '', skill).lower().strip() for skill in skills]
+    return [skill.lower().strip() for skill in skills]
 
 @app.post("/career-recommendations")
 async def get_recommendations(skills_input: SkillsInput):
@@ -101,31 +67,50 @@ async def get_recommendations(skills_input: SkillsInput):
         if not skills_input.skills:
             raise HTTPException(status_code=400, detail="No skills provided")
 
+        # Clean and prepare input skills
         user_skills = clean_skills(skills_input.skills)
-        user_skills_set = set(user_skills)
-        user_skills_text = " ".join(user_skills)
-        user_embedding = model.encode(user_skills_text)
         
         recommendations = []
-        for job_role, details in JOB_ROLES.items():
-            job_skills_text = " ".join(details["skills"])
-            job_embedding = model.encode(job_skills_text)
+        for job_title, job_info in job_data.items():
+            # Calculate skill match percentage
+            required_skills = set([skill.lower() for skill in job_info['skills']])  # Convert to lowercase
+            user_skills_set = set([skill.lower() for skill in user_skills])  # Convert to lowercase
             
-            similarity = np.dot(user_embedding, job_embedding) / (
-                np.linalg.norm(user_embedding) * np.linalg.norm(job_embedding)
-            )
-            similarity_score = float(similarity * 100)
+            # Calculate similarity based on skill overlap
+            common_skills = required_skills.intersection(user_skills_set)
             
-            missing_skills = set(details["skills"]) - user_skills_set
+            # Calculate match percentage based on both required and user skills
+            total_unique_skills = len(required_skills.union(user_skills_set))
+            if total_unique_skills > 0:
+                similarity_score = (len(common_skills) / total_unique_skills) * 100
+            else:
+                similarity_score = 0
             
+            # Find missing skills
+            missing_skills = required_skills - user_skills_set
+            
+            # Get job description
+            job_description = job_info.get('description', 
+                f"This role requires expertise in {', '.join(required_skills)}")
+            
+            # Create recommendation object
             recommendations.append({
-                'job_role': job_role,
-                'category': details["category"],
-                'similarity_score': similarity_score,
-                'missing_skills': ', '.join(sorted(missing_skills)) if missing_skills else 'None'
+                'title': job_title,
+                'category': job_info['category'],
+                'match': round(similarity_score, 2),
+                'description': job_description,
+                'missing_skills': sorted(list(missing_skills)),
+                'skills': sorted(list(common_skills))  # Only include matched skills
             })
         
-        recommendations.sort(key=lambda x: x['similarity_score'], reverse=True)
+        # Sort recommendations by similarity score
+        recommendations.sort(key=lambda x: x['match'], reverse=True)
+        
+        # Print debug information
+        print(f"User skills: {user_skills}")
+        print(f"First recommendation match: {recommendations[0]['match']}%")
+        
+        # Return top 10 recommendations
         return recommendations[:10]
 
     except Exception as e:
@@ -134,13 +119,26 @@ async def get_recommendations(skills_input: SkillsInput):
 
 @app.get("/available-skills")
 async def get_available_skills():
-    """Return list of all available skills by category"""
+    """Return list of all available skills from the job data"""
     try:
+        all_skills = set()
+        categories = {}
+        
+        for job_title, job_info in job_data.items():
+            category = job_info['category']
+            if category not in categories:
+                categories[category] = set()
+            
+            job_skills = set(job_info['skills'])
+            categories[category].update(job_skills)
+            all_skills.update(job_skills)
+        
         return {
-            "categories": SKILL_CATEGORIES,
-            "all_skills": sorted(set(
-                skill for skills in SKILL_CATEGORIES.values() for skill in skills
-            ))
+            "categories": {
+                category: sorted(list(skills))
+                for category, skills in categories.items()
+            },
+            "all_skills": sorted(list(all_skills))
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -150,11 +148,11 @@ async def get_job_categories():
     """Return all job categories and their roles"""
     try:
         categories = {}
-        for role, details in JOB_ROLES.items():
-            category = details["category"]
+        for job_title, job_info in job_data.items():
+            category = job_info['category']
             if category not in categories:
                 categories[category] = []
-            categories[category].append(role)
+            categories[category].append(job_title)
         return categories
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -166,10 +164,4 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(
-        "app:app", 
-        host="127.0.0.1", 
-        port=5002, 
-        reload=True,
-        workers=1
-    ) 
+    uvicorn.run(app, host="127.0.0.1", port=5002, reload=True) 

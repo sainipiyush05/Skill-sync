@@ -1,0 +1,91 @@
+job_role,skills,projects,companies,experience,average_salary
+Full Stack Developer,JavaScript Python React Node.js MongoDB AWS,E-commerce Platform Social Media Dashboard,Google Facebook Amazon,Mid-level (2-5 years),$90000 - $140000
+Financial Analyst,Financial Modeling Excel Bloomberg Terminal Risk Analysis,Investment Portfolio Analysis Market Research Reports,Goldman Sachs JP Morgan Morgan Stanley,Entry-level (0-2 years),$75000 - $95000
+Mechanical Engineer,AutoCAD SolidWorks FEA GD&T,Product Design Manufacturing Process Optimization,Boeing General Electric Siemens,Mid-level (2-5 years),$85000 - $120000
+Clinical Research Coordinator,Clinical Trial Management GCP Medical Documentation,Drug Trial Management Patient Data Analysis,Pfizer Johnson & Johnson Novartis,Senior-level (5+ years),$70000 - $100000
+Investment Banking Associate,Financial Modeling Valuation M&A Due Diligence,Merger Analysis IPO Documentation,Goldman Sachs Morgan Stanley BlackRock,Mid-level (2-5 years),$150000 - $250000
+Supply Chain Manager,ERP Systems Logistics Inventory Management Six Sigma,Supply Chain Optimization Vendor Management,Amazon Walmart P&G,Senior-level (5+ years),$100000 - $150000
+Biomedical Engineer,Medical Device Design FDA Regulations CAD,Medical Device Prototyping Clinical Testing,Medtronic Boston Scientific Phillips,Mid-level (2-5 years),$90000 - $130000
+Quantitative Trader,Python Machine Learning Statistical Analysis Trading Algorithms,Trading Strategy Development Risk Models,Citadel Two Sigma Renaissance Technologies,Senior-level (5+ years),$200000 - $400000
+Civil Engineer,AutoCAD Structural Analysis Project Management,Bridge Design Building Construction,AECOM Bechtel Jacobs,Mid-level (2-5 years),$80000 - $120000
+Healthcare Administrator,Healthcare Management EHR Systems Healthcare Laws,Hospital Operations Optimization Staff Management,Kaiser Permanente Mayo Clinic Cleveland Clinic,Senior-level (5+ years),$90000 - $140000
+AI Research Scientist,Deep Learning TensorFlow PyTorch NLP,Image Recognition Language Models,OpenAI DeepMind Google Brain,Senior-level (5+ years),$150000 - $250000
+Management Consultant,Business Strategy Data Analysis Project Management,Corporate Strategy Market Entry Analysis,McKinsey BCG Bain,Mid-level (2-5 years),$140000 - $200000
+Process Engineer,Chemical Engineering Process Safety Six Sigma,Plant Optimization Safety Protocols,ExxonMobil Shell Dow Chemical,Mid-level (2-5 years),$85000 - $130000
+Clinical Data Manager,SAS Clinical Data Management CDISC Standards,Clinical Trial Database Data Quality Management,Roche GSK AstraZeneca,Senior-level (5+ years),$85000 - $120000
+Risk Manager,Risk Assessment Basel Regulations Financial Analysis,Risk Models Compliance Reports,Citigroup HSBC Deutsche Bank,Senior-level (5+ years),$120000 - $180000
+Operations Manager,Operations Management Lean Six Sigma Team Leadership,Process Improvement Cost Reduction,Toyota Ford Tesla,Senior-level (5+ years),$90000 - $140000
+Electrical Engineer,Circuit Design PCB Layout FPGA Programming,Power Systems Design Electronics Prototyping,Intel Texas Instruments AMD,Mid-level (2-5 years),$90000 - $135000
+Nurse Practitioner,Clinical Care Patient Assessment Medical Records,Patient Care Programs Health Education,Cleveland Clinic Johns Hopkins Mayo Clinic,Senior-level (5+ years),$110000 - $150000
+Portfolio Manager,Asset Allocation Risk Management Market Analysis,Investment Strategy Portfolio Optimization,Vanguard Fidelity BlackRock,Senior-level (5+ years),$150000 - $250000
+Business Intelligence Analyst,SQL Tableau Power BI Data Analysis,Sales Analytics Dashboard KPI Reporting,Microsoft Oracle SAP,Mid-level (2-5 years),$85000 - $120000
+Aerospace Engineer,Fluid Dynamics Propulsion Systems CAD,Aircraft Design Propulsion Systems,NASA SpaceX Lockheed Martin,Senior-level (5+ years),$110000 - $160000
+Healthcare Data Scientist,Python R Healthcare Analytics HIPAA,Patient Outcome Analysis Resource Optimization,UnitedHealth Anthem Cigna,Mid-level (2-5 years),$100000 - $150000
+Investment Research Analyst,Equity Research Financial Analysis Industry Analysis,Stock Analysis Reports Industry Studies,Fidelity Charles Schwab Edward Jones,Entry-level (0-2 years),$70000 - $100000
+Manufacturing Engineer,Lean Manufacturing Quality Control CAM,Production Line Optimization Quality Systems,3M Caterpillar John Deere,Mid-level (2-5 years),$80000 - $120000
+Medical Device Sales Manager,Medical Device Knowledge Sales Relationship Management,Sales Territory Management Product Training,Stryker Zimmer Biomet Abbott,Senior-level (5+ years),$120000 - $200000
+Corporate Strategy Director,Strategic Planning Market Analysis Business Development,Growth Strategy Market Expansion,Microsoft Apple Google,Senior-level (5+ years),$150000 - $250000
+Robotics Engineer,ROS Computer Vision Control Systems,Industrial Robot Programming Automation Systems,Boston Dynamics FANUC ABB,Mid-level (2-5 years),$100000 - $150000
+Pharmaceutical Researcher,Drug Development Clinical Research Biochemistry,Drug Discovery Clinical Trials,Pfizer Merck Bristol Myers Squibb,Senior-level (5+ years),$120000 - $180000
+Commodities Trader,Commodities Markets Risk Management Trading Strategies,Trading Analysis Market Research,Glencore Cargill ADM,Mid-level (2-5 years),$130000 - $200000
+Quality Control Engineer,Quality Systems ISO Standards Statistical Process Control,Quality Management Systems Process Validation,Toyota Samsung LG,Mid-level (2-5 years),$75000 - $110000
+Healthcare IT Manager,Healthcare Systems IT Infrastructure HIPAA Compliance,EHR Implementation Security Protocols,Epic Systems Cerner Allscripts,Senior-level (5+ years),$110000 - $160000
+Mergers & Acquisitions Analyst,Financial Modeling Due Diligence Valuation,M&A Deal Analysis Integration Planning,Goldman Sachs JP Morgan Morgan Stanley,Mid-level (2-5 years),$130000 - $200000
+Environmental Engineer,Environmental Regulations Waste Management Sustainability,Environmental Impact Studies Remediation Projects,CH2M AECOM Arcadis,Mid-level (2-5 years),$80000 - $120000
+Clinical Research Manager,Clinical Trial Design GCP Research Management,Multi-site Trial Management Protocol Development,Novartis Roche Merck,Senior-level (5+ years),$120000 - $180000
+Actuarial Analyst,Statistical Analysis Risk Assessment Actuarial Software,Insurance Risk Models Mortality Studies,AIG Prudential MetLife,Entry-level (0-2 years),$75000 - $110000
+Nuclear Engineer,Nuclear Systems Safety Protocols Radiation Protection,Reactor Design Safety Analysis,Westinghouse GE Nuclear Exelon,Senior-level (5+ years),$120000 - $180000
+Medical Science Liaison,Clinical Knowledge Scientific Communication Research,Medical Education Programs Clinical Advisory,Novartis Pfizer AstraZeneca,Senior-level (5+ years),$140000 - $200000
+Derivatives Trader,Options Trading Risk Management Financial Mathematics,Options Strategy Development Risk Models,Citadel Jane Street Optiver,Mid-level (2-5 years),$150000 - $300000
+Industrial Engineer,Process Optimization Ergonomics Quality Control,Manufacturing Efficiency Workflow Optimization,Boeing Ford General Motors,Mid-level (2-5 years),$85000 - $130000
+Telemedicine Director,Healthcare Management Telehealth Systems Medical License,Virtual Care Programs Remote Health Platforms,Teladoc Amwell Doctor On Demand,Senior-level (5+ years),$160000 - $250000
+Business Development Manager,Sales Strategy Market Analysis Negotiation,Partnership Development Market Expansion,Salesforce Oracle IBM,Senior-level (5+ years),$120000 - $180000
+Petroleum Engineer,Reservoir Engineering Well Design Geology,Oil Field Development Production Optimization,ExxonMobil Shell Chevron,Mid-level (2-5 years),$130000 - $190000
+Clinical Informatics Specialist,Healthcare IT Data Analysis Clinical Workflows,EHR Optimization Clinical Decision Support,Epic Cerner Meditech,Mid-level (2-5 years),$90000 - $140000
+Hedge Fund Analyst,Investment Analysis Portfolio Management Programming,Trading Strategy Development Risk Analysis,Bridgewater Point72 Renaissance,Mid-level (2-5 years),$150000 - $250000
+Automation Engineer,PLC Programming SCADA Industrial Automation,Factory Automation Control Systems,Siemens Rockwell ABB,Mid-level (2-5 years),$90000 - $140000
+Healthcare Compliance Officer,Healthcare Laws Risk Management Compliance,Compliance Programs Audit Management,UnitedHealth Anthem Humana,Senior-level (5+ years),$110000 - $170000
+Credit Risk Analyst,Credit Analysis Risk Modeling Banking Regulations,Credit Risk Models Portfolio Analysis,Bank of America Wells Fargo Citi,Mid-level (2-5 years),$85000 - $130000
+Aerodynamics Engineer,CFD Wind Tunnel Testing Aerodynamics,Aircraft Design Performance Analysis,Boeing Airbus Lockheed Martin,Senior-level (5+ years),$120000 - $180000
+Clinical Trial Manager,Trial Management GCP Protocol Development,Multi-center Trials Study Coordination,Pfizer GSK Merck,Senior-level (5+ years),$130000 - $190000
+Treasury Manager,Cash Management Foreign Exchange Risk Management,Cash Flow Forecasting Investment Strategy,JP Morgan HSBC Citi,Senior-level (5+ years),$120000 - $180000
+Robotics Software Engineer,ROS Computer Vision C++,Autonomous Systems Robot Control,Boston Dynamics iRobot KUKA,Mid-level (2-5 years),$110000 - $170000
+Healthcare Quality Manager,Quality Metrics Patient Safety Regulatory Compliance,Quality Improvement Patient Safety Programs,Cleveland Clinic Mayo Clinic Johns Hopkins,Senior-level (5+ years),$100000 - $150000
+Fixed Income Analyst,Bond Markets Yield Analysis Financial Modeling,Fixed Income Research Portfolio Analysis,PIMCO BlackRock Vanguard,Mid-level (2-5 years),$100000 - $150000
+Materials Engineer,Material Science Testing Methods Quality Control,Materials Development Failure Analysis,3M DuPont BASF,Mid-level (2-5 years),$85000 - $130000
+Pharmaceutical Sales Director,Sales Management Medical Knowledge Business Development,Sales Strategy Team Management,Johnson & Johnson Novartis Roche,Senior-level (5+ years),$150000 - $250000
+Corporate Finance Manager,Financial Planning Analysis Budgeting,Financial Forecasting Budget Management,Amazon Google Microsoft,Senior-level (5+ years),$130000 - $190000
+Controls Engineer,PLC Programming HMI Design Industrial Networks,Control System Design Process Automation,Honeywell Emerson Schneider,Mid-level (2-5 years),$90000 - $140000
+Clinical Operations Director,Clinical Research Team Management GCP,Research Program Management Site Operations,PPD IQVIA Parexel,Senior-level (5+ years),$150000 - $220000
+Algorithmic Trading Developer,Python Machine Learning Trading Systems,Trading Algorithm Development Market Analysis,Citadel Two Sigma DE Shaw,Senior-level (5+ years),$180000 - $300000
+Bioprocess Engineer,Fermentation Scale-up Process Development,Bioreactor Design Process Optimization,Amgen Genentech Biogen,Mid-level (2-5 years),$95000 - $145000
+Healthcare Strategy Consultant,Healthcare Systems Business Strategy Analytics,Healthcare Market Analysis Strategic Planning,McKinsey BCG Deloitte,Senior-level (5+ years),$140000 - $220000
+Venture Capital Analyst,Startup Analysis Due Diligence Market Research,Investment Analysis Deal Sourcing,Sequoia Andreessen Horowitz Kleiner Perkins,Mid-level (2-5 years),$120000 - $180000
+RF Engineer,RF Design Signal Processing Testing,Antenna Design RF Systems,Qualcomm Nokia Ericsson,Mid-level (2-5 years),$95000 - $145000
+Medical Director,Clinical Leadership Healthcare Management Medical License,Clinical Program Development Quality Initiatives,United Healthcare Kaiser Blue Cross,Senior-level (5+ years),$250000 - $400000
+Investment Banking Director,M&A Capital Markets Client Management,Deal Management Strategic Advisory,Goldman Sachs Morgan Stanley JP Morgan,Senior-level (5+ years),$250000 - $500000
+Systems Integration Engineer,System Architecture APIs Integration Protocols,Enterprise Integration Cloud Migration,IBM Accenture Deloitte,Mid-level (2-5 years),$100000 - $150000
+Clinical Pharmacist,Pharmacy Patient Care Drug Safety,Medication Management Patient Education,CVS Health Walgreens Hospital Systems,Mid-level (2-5 years),$110000 - $140000
+Market Risk Manager,Risk Models Basel Regulations VaR,Risk Assessment Regulatory Reporting,Deutsche Bank UBS Credit Suisse,Senior-level (5+ years),$130000 - $200000
+Telecommunications Engineer,Network Design 5G Wireless Systems,Network Deployment Coverage Optimization,Verizon AT&T T-Mobile,Mid-level (2-5 years),$90000 - $140000
+Healthcare Analytics Manager,Healthcare Data Analytics Business Intelligence,Patient Outcomes Analysis Cost Analysis,OptumHealth Anthem Cigna,Senior-level (5+ years),$120000 - $180000
+Equity Research Director,Financial Analysis Industry Research Valuation,Sector Analysis Investment Recommendations,Morgan Stanley Goldman Sachs JP Morgan,Senior-level (5+ years),$200000 - $350000
+Semiconductor Process Engineer,Semiconductor Fabrication Process Integration,Chip Manufacturing Yield Improvement,TSMC Intel Samsung,Mid-level (2-5 years),$100000 - $160000
+Clinical Education Director,Medical Education Program Development Teaching,Training Program Development Curriculum Design,Teaching Hospitals Medical Schools,Senior-level (5+ years),$130000 - $190000
+Asset Management Associate,Portfolio Management Investment Analysis Client Relations,Investment Strategy Portfolio Analysis,BlackRock Vanguard Fidelity,Mid-level (2-5 years),$110000 - $170000
+Quality Systems Engineer,QMS ISO Standards Regulatory Compliance,Quality System Implementation Audit Management,Medtronic Abbott Boston Scientific,Mid-level (2-5 years),$85000 - $130000
+Healthcare Technology Manager,Health IT Project Management Clinical Systems,Technology Implementation System Integration,Epic Cerner Philips Healthcare,Senior-level (5+ years),$120000 - $180000
+Commodities Research Analyst,Commodity Markets Economic Analysis Forecasting,Market Analysis Price Forecasting,Bloomberg S&P Global IHS Markit,Mid-level (2-5 years),$90000 - $140000
+Power Systems Engineer,Power Distribution Grid Systems Protection,Grid Design Power System Analysis,General Electric Siemens ABB,Mid-level (2-5 years),$95000 - $145000
+Clinical Systems Analyst,Healthcare IT Clinical Workflows System Analysis,EHR Optimization Workflow Analysis,Epic Cerner Allscripts,Mid-level (2-5 years),$85000 - $130000
+Real Estate Investment Analyst,Real Estate Finance Market Analysis Modeling,Property Valuation Investment Analysis,Blackstone Real Estate CBRE JLL,Mid-level (2-5 years),$90000 - $140000
+Manufacturing Quality Manager,Quality Control Six Sigma Lean Manufacturing,Quality Systems Process Improvement,Toyota Tesla Ford,Senior-level (5+ years),$110000 - $170000
+Healthcare Research Director,Clinical Research Program Management Grant Writing,Research Program Development Clinical Studies,Research Hospitals NIH CDC,Senior-level (5+ years),$140000 - $220000
+Investment Strategy Analyst,Asset Allocation Portfolio Theory Risk Analysis,Investment Strategy Asset Analysis,Charles Schwab Fidelity Vanguard,Mid-level (2-5 years),$100000 - $150000
+Embedded Software Engineer,C/C++ Microcontrollers RTOS,Firmware Development Device Drivers,Texas Instruments NXP ARM,Mid-level (2-5 years),$100000 - $160000
+Pharmaceutical Project Manager,Drug Development Clinical Trials Project Management,Drug Development Programs Clinical Studies,Pfizer Merck GSK,Senior-level (5+ years),$130000 - $190000
+Corporate Development Director,M&A Strategy Business Development,Corporate Strategy Acquisition Integration,Microsoft Apple Google,Senior-level (5+ years),$180000 - $300000
+Automation Controls Engineer,PLC SCADA Industrial Networks,Factory Automation Process Control,Rockwell Automation Siemens ABB,Mid-level (2-5 years),$90000 - $140000
+Healthcare Operations Director,Healthcare Management Operations Compliance,Facility Management Staff Leadership,HCA Healthcare Tenet Community Health,Senior-level (5+ years),$140000 - $220000
+Fixed Income Portfolio Manager,Bond Markets Portfolio Management Risk Analysis,Fixed Income Strategy Portfolio Management,PIMCO BlackRock Vanguard,Senior-level (5+ years),$200000 - $350000
+ASIC Design Engineer,Digital Design Verilog FPGA,Chip Design Verification,Intel AMD Nvidia,Mid-level (2-5 years),$120000
