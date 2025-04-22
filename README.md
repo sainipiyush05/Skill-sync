@@ -9,18 +9,18 @@ Skill Sync is a comprehensive platform that helps developers track and synchroni
 ## 🚀 Features
 
 - **Platform Integration**
-  - LeetCode progress tracking
-  - HackerRank achievements
-  - CodeChef statistics
-  - GitHub activity monitoring
-  - LinkedIn profile optimization
+  - LeetCode progress tracking.
+  - HackerRank achievements.
+  - CodeChef statistics.
+  - GitHub activity monitoring.
+  - LinkedIn profile optimization.
 
 - **Learning Tools**
-  - Personalized learning paths
-  - Skill progression tracking
-  - Interactive learning tree
-  - Custom roadmaps
-  - Progress analytics
+  - Personalized learning paths.
+  - Skill progression tracking.
+  - Interactive learning tree.
+  - Custom roadmaps.
+  - Progress analytics.
 
 - **Developer Tools**
   - Real-time statistics
