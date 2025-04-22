@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiHome, FiGithub, FiLinkedin, FiBarChart2, FiBook, FiMenu, FiX, FiUser } from 'react-icons/fi';
+import { FiHome, FiGithub, FiLinkedin, FiBarChart2, FiBook, FiMenu, FiX, FiUser, FiUsers } from 'react-icons/fi';
 import { useAuth } from '../hooks/useAuth';
 import BrandLogo from './BrandLogo';
 
@@ -16,6 +16,7 @@ const Navbar = () => {
     { path: '/linkedin', icon: FiLinkedin, label: 'LinkedIn' },
     { path: '/stats', icon: FiBarChart2, label: 'Stats' },
     { path: '/learning-tree', icon: FiBook, label: 'Learning Tree' },
+    { path: 'https://p2p-puce.vercel.app/', icon: FiUsers, label: 'Community', external: true },
   ];
 
   return (
@@ -53,24 +54,36 @@ const Navbar = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link
-                    to={item.path}
-                    className={`relative flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      location.pathname === item.path
-                        ? 'text-white'
-                        : 'text-gray-300 hover:text-white'
-                    }`}
-                  >
-                    <item.icon className="mr-2 h-5 w-5" />
-                    {item.label}
-                    {location.pathname === item.path && (
-                      <motion.div
-                        layoutId="navbar-active"
-                        className="absolute inset-0 bg-accent/10 rounded-lg -z-10"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`relative flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-300 hover:text-white`}
+                    >
+                      <item.icon className="mr-2 h-5 w-5" />
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={`relative flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        location.pathname === item.path
+                          ? 'text-white'
+                          : 'text-gray-300 hover:text-white'
+                      }`}
+                    >
+                      <item.icon className="mr-2 h-5 w-5" />
+                      {item.label}
+                      {location.pathname === item.path && (
+                        <motion.div
+                          layoutId="navbar-active"
+                          className="absolute inset-0 bg-accent/10 rounded-lg -z-10"
+                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                        />
+                      )}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -119,18 +132,31 @@ const Navbar = () => {
                   whileHover={{ scale: 1.02, x: 5 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Link
-                    to={item.path}
-                    className={`flex items-center px-3 py-2 rounded-lg text-base font-medium ${
-                      location.pathname === item.path
-                        ? 'bg-accent/10 text-white'
-                        : 'text-gray-300 hover:text-white hover:bg-accent/5'
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <item.icon className="mr-2 h-5 w-5" />
-                    {item.label}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-accent/5"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <item.icon className="mr-2 h-5 w-5" />
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className={`flex items-center px-3 py-2 rounded-lg text-base font-medium ${
+                        location.pathname === item.path
+                          ? 'bg-accent/10 text-white'
+                          : 'text-gray-300 hover:text-white hover:bg-accent/5'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <item.icon className="mr-2 h-5 w-5" />
+                      {item.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               <motion.button

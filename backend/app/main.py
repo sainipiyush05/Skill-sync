@@ -6,6 +6,17 @@ import joblib
 import numpy as np
 import os
 import json
+import logging
+
+# Import routes
+from routes import leetcode, codechef, hackerrank  # Add this line
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger("skillsync_api")
 
 app = FastAPI()
 
@@ -156,6 +167,11 @@ async def get_job_categories():
         return categories
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+# Include coding stats routers
+app.include_router(leetcode.router)
+app.include_router(codechef.router)
+app.include_router(hackerrank.router)
 
 @app.get("/health")
 async def health_check():

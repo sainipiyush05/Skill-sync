@@ -4,11 +4,6 @@ import helmet from 'helmet';
 import compression from 'compression';
 import dotenv from 'dotenv';
 
-// Import routers properly
-import leetcodeRouter from './api/leetcode';
-import codechefRouter from './api/codechef';
-import hackerrankRouter from './api/hackerrank';
-
 // Load environment variables
 dotenv.config();
 
@@ -46,10 +41,13 @@ app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'healthy' });
 });
 
-// API routes
-app.use('/api/leetcode', leetcodeRouter);
-app.use('/api/codechef', codechefRouter);
-app.use('/api/hackerrank', hackerrankRouter);
+// API info endpoint
+app.get('/api', (req: Request, res: Response) => {
+  res.status(200).json({ 
+    message: 'API routes for coding platforms have been migrated to Python backend',
+    pythonBackend: 'Running on http://localhost:5001'
+  });
+});
 
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
@@ -62,11 +60,12 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 // Port configuration
-const PORT = parseInt(process.env.PORT || '5001', 10);
+const PORT = parseInt(process.env.PORT || '5002', 10);
 const HOST = process.env.HOST || '127.0.0.1';
 
 app.listen(PORT, HOST, () => {
-  console.log(`Server running at http://${HOST}:${PORT}`);
+  console.log(`Node.js Server running at http://${HOST}:${PORT}`);
+  console.log(`Python Backend expected at http://localhost:5001`);
 });
 
 export default app;

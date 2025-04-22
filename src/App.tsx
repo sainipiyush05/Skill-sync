@@ -10,7 +10,7 @@ import CodingStats from './pages/CodingStats';
 import LearningTree from './pages/LearningTree';
 import PrivateRoute from './components/PrivateRoute';
 import MainLayout from './layouts/MainLayout';
-import LinkedInCallback from './pages/LinkedInCallback';
+// import LinkedInCallback from './pages/LinkedInCallback';
 import BootSplash from './components/BootSplash';
 import { useAuth } from './hooks/useAuth';
 
@@ -88,7 +88,7 @@ function App() {
               </PrivateRoute>
             } />
             <Route path="/linkedin-improvement" element={<LinkedInImprovement />} />
-            <Route path="/linkedin-callback" element={<LinkedInCallback />} />
+            {/* <Route path="/linkedin-callback" element={<LinkedInCallback />} /> */}
           </Routes>
         )}
       </AnimatePresence>

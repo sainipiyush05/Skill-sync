@@ -51,7 +51,7 @@ Skill Sync is a comprehensive platform that helps developers track and synchroni
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/skill-sync.git
+git clone https://github.com/brighteyekid/skill-sync.git
 ```
 
 2. **Navigate to the project directory**
@@ -128,16 +128,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-For support, email support@skillsync.dev or join our Discord community.
-
-## 🔮 Roadmap
-
-- [ ] Add more coding platforms
-- [ ] Implement AI-powered recommendations
-- [ ] Add team collaboration features
-- [ ] Introduce mentorship system
-- [ ] Add code review integration
-- [ ] Implement real-time progress sharing
+For support, email support@skillsync.dev
 
 ## 🔒 Security
 

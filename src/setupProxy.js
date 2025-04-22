@@ -9,16 +9,20 @@ module.exports = function(app) {
       changeOrigin: true,
       pathRewrite: {
         '^/api/ml': ''
-      }
+      },
+      timeout: 30000,
+      logLevel: 'debug'
     })
   );
 
-  // Proxy requests to the Node.js server
+  // Proxy requests to the coding stats and LinkedIn API
   app.use(
     '/api',
     createProxyMiddleware({
       target: 'http://127.0.0.1:5001',
-      changeOrigin: true
+      changeOrigin: true,
+      timeout: 30000,
+      logLevel: 'debug'
     })
   );
 }; 
