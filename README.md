@@ -91,18 +91,18 @@ uvicorn app:app --reload --port 5001
 ## 📱 Usage
 
 1. **Authentication**
-   - Sign up with email/password or Google
-   - Complete your profile with platform usernames
+   - Sign up with email/password or Google.
+   - Complete your profile with platform usernames.
 
 2. **Platform Integration**
-   - Connect your coding platform accounts
-   - Sync your progress automatically
-   - View unified statistics
+   - Connect your coding platform accounts.
+   - Sync your progress automatically.
+   - View unified statistics.
 
 3. **Learning Path**
-   - Choose your career goals
-   - Follow recommended learning paths
-   - Track your progress
+   - Choose your career goals.
+   - Follow recommended learning paths.
+   - Track your progress.
 
 ## 🤝 Contributing
 
