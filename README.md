@@ -43,8 +43,8 @@ Skill Sync is a comprehensive platform that helps developers track and synchroni
   - FastAPI
   - Python
   - Firebase
-  - Machine Learning Models
-  - Sentence Transformers
+  - Machine Learning Model
+  - SBERT
 
 ## 🏗️ Installation
 
@@ -141,6 +141,6 @@ Give a ⭐️ if this project helped you!
 ---
 
 <p align="center">
-  Made with ❤️ by the Skill Sync Team
+  Made with Love and care by the Skill Sync Team
 </p>
 
